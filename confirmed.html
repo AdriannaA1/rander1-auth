@@ -14,11 +14,19 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // spróbuj otworzyć aplikację
-      setTimeout(function(){ document.getElementById('fallback').style.display='block'; }, 1200);
+      // spróbuj otworzyć aplikację z obsługą błędów
+      let fallbackDisplayed = false;
+
+      setTimeout(function() {
+        fallbackDisplayed = true;
+        document.getElementById('fallback').style.display = 'block';
+      }, 1200);
+
       try {
         window.location.replace('rander1://auth');
-      } catch(e) {}
+      } catch (e) {
+        console.error('Błąd w przekierowaniu:', e);
+      }
     });
   </script>
 </head>
